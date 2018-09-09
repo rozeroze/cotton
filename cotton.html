@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>cotton</title>
+    <style>body { margin: 0; padding: 0; }</style>
+    <link rel="stylesheet" href="./cotton.css">
+    <script src="./cotton.js" defer></script>
+</head>
+<body cotton>
+
+    <header id="ctn-header">
+        <div class="ctn-title">
+            <a href="#">Cotton</a>
+        </div>
+        <nav class="ctn-nav">
+            <ul>
+                <li><a href="https://github.com/rozeroze/cotton">Github</a></li>
+                <li><a href="https://github.com/rozeroze/cotton/blob/master/readme.md">ReadMe</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="ctn-content">
+
+        <section>
+            <h1>Cotton</h1>
+            <p>CottonはInput要素の動作を拡張するためのライブラリです</p>
+            <p>
+            <!-- badge.fury.io -->
+            <!-- bower.io -->
+            <!-- www.jsdelivr.com -->
+            <!-- www.npmjs.com -->
+            </p>
+        </section>
+
+        <section>
+            <h2>TextBox</h2>
+
+            <section>
+                <h3>UTF-8</h3>
+                <p>utf-8で10byteを超えた部分は削除される</p>
+                <pre><code>&lt;input type="text" class="ctn-text-utf8 ctn-text-leftbyte" ctn-maxbyte="10"&gt;</code></pre>
+                <input type="text" class="ctn-text-utf8 ctn-text-leftbyte" ctn-maxbyte="10">
+                <p>utf-8で10byteを超えた場合は枠が赤くなる</p>
+                <pre><code>&lt;input type="text" class="ctn-text-utf8 ctn-text-highlight" ctn-maxbyte="10"&gt;</code></pre>
+                <input type="text" class="ctn-text-utf8 ctn-text-highlight" ctn-maxbyte="10">
+            </section>
+
+            <section>
+                <h3>UTF-16</h3>
+                <p>utf-16で10byteを超えた部分は削除される</p>
+                <pre><code>&lt;input type="text" class="ctn-text-utf16 ctn-text-leftbyte" ctn-maxbyte="10"&gt;</code></pre>
+                <input type="text" class="ctn-text-utf16 ctn-text-leftbyte" ctn-maxbyte="10">
+                <p>utf-16で10byteを超えた場合は枠が赤くなる</p>
+                <pre><code>&lt;input type="text" class="ctn-text-utf16 ctn-text-highlight" ctn-maxbyte="10"&gt;</code></pre>
+                <input type="text" class="ctn-text-utf16 ctn-text-highlight" ctn-maxbyte="10">
+            </section>
+
+            <section>
+                <h3>ShiftJIS</h3>
+                <p>sjisで10byteを超えた部分は削除される</p>
+                <pre><code>&lt;input type="text" class="ctn-text-sjis ctn-text-leftbyte" ctn-maxbyte="10"&gt;</code></pre>
+                <input type="text" class="ctn-text-sjis ctn-text-leftbyte" ctn-maxbyte="10">
+                <p>sjisで10byteを超えた場合は枠が赤くなる</p>
+                <pre><code>&lt;input type="text" class="ctn-text-sjis ctn-text-highlight" ctn-maxbyte="10"&gt;</code></pre>
+                <input type="text" class="ctn-text-sjis ctn-text-highlight" ctn-maxbyte="10">
+            </section>
+
+            <section>
+                <h3>Number</h3>
+                <p>入力可能な数値の上限と下限を設定する→標準でできる</p>
+                <pre><code>&lt;input type="number" max="999" min="1"&gt;</code></pre>
+                <form action="javascript: alert('number is in-range');">
+                    <input type="number" max="999" min="1">
+                    <input type="submit">
+                </form>
+            </section>
+
+            <section>
+                <h3>Password</h3>
+                <p>パスワードに英大文字、英小文字、数字がそれぞれ１つ以上含まれているか→標準でできる</p>
+                <pre><code>&lt;input type="password" minlength="8" maxlength="32" autocomplete="off" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"&gt;</code></pre>
+                <form action="javascript: alert('password contain at least on number and one uppercase and lowercase letter, and at least 8 or more charecters');">
+                    <input type="password" minlength="8" maxlength="32" autocomplete="off" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+                    <input type="submit">
+                </form>
+                <p>メッセージを追加することが可能→標準でできる</p>
+                <form action="javascript: alert('password contain at least on number and one uppercase and lowercase letter, and at least 8 or more charecters');">
+                    <input type="password" minlength="8" maxlength="32" autocomplete="off" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="英大文字(A～Z)、英小文字(a～z)、数字(0～9)がそれぞれ１つ以上必要">
+                    <input type="submit">
+                </form>
+            </section>
+
+        </section>
+
+        <section>
+            <h2>CheckBox</h2>
+
+            <section>
+                <h3>Require</h3>
+                <p>チェックがない場合はメッセージを表示する</p>
+                <pre><code>&lt;input type="checkbox" class="ctn-check-require"&gt;</code></pre>
+                <input type="checkbox" class="ctn-check-require"><span>利用規約に同意する</span>
+                <p>メッセージの内容は指定できる</p>
+                <pre><code>&lt;input type="checkbox" class="ctn-check-require" ctn-invalid-message="チェックが必要です"&gt;</code></pre>
+                <input type="checkbox" class="ctn-check-require" ctn-invalid-message="チェックが必要です"><span>利用規約に同意する</span>
+            </section>
+
+        </section>
+
+        <section>
+            <h2>License</h2>
+            <p></p>
+        </section>
+
+    </main>
+
+    <footer id="ctn-footer">
+        <span>Copyright (c) 2018 rozeroze</span>
+    </footer>
+
+</body>
+</html>

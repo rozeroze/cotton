@@ -1,0 +1,115 @@
+@charset "UTF-8";
+
+[cotton] {
+    background-color: snow;
+    color: black;
+    font-family: 'Roboto', 'Noto Sans Japanese', sans-serif;
+    font-size: 16px;
+    line-height: 16px;
+}
+/* element */
+[cotton] a {
+    color: inherit;
+    text-decoration: none;
+}
+[cotton] a:link:hover {
+    color: forestgreen;
+}
+[cotton] a:visited:hover {
+    color: cornflowerblue;
+}
+[cotton] li {
+    list-style-type: none;
+}
+[cotton] table {
+    border-collapse: collapse;
+}
+[cotton] code {
+    background-color: white;
+    border: 1px solid lightgray;
+    padding: 10px;
+}
+[cotton] th,
+[cotton] td {
+    border: gray solid 1px;
+}
+[cotton] h1,
+[cotton] h2,
+[cotton] h3,
+[cotton] h4,
+[cotton] h5,
+[cotton] h6 {
+    text-align: center;
+}
+[cotton] h1:before,
+[cotton] h2:before,
+[cotton] h3:before,
+[cotton] h4:before,
+[cotton] h5:before,
+[cotton] h6:before {
+    content: '--- ';
+}
+[cotton] h1:after,
+[cotton] h2:after,
+[cotton] h3:after,
+[cotton] h4:after,
+[cotton] h5:after,
+[cotton] h6:after {
+    content: ' ---';
+}
+
+/* header */
+[cotton] header#ctn-header {
+    min-height: 30px;
+    background-color: lightgray;
+    border-radius: 15px;
+    margin: 15px;
+    padding: 15px;
+    display: flex;
+    flex-direction: row;
+    box-shadow: 0 0.5em 1.5em 0 rgba(0, 0, 0, 0.1);
+}
+[cotton] header#ctn-header * {
+    height: auto;
+    margin: 0 auto;
+    padding: 0;
+}
+[cotton] header#ctn-header .ctn-title {
+    font-size: 1.2em;
+}
+[cotton] header#ctn-header .ctn-nav ul {
+    display: flex;
+    flex-direction: row;
+}
+[cotton] header#ctn-header .ctn-nav ul li {
+    margin: 0 10px;
+}
+
+/* main */
+[cotton] main#ctn-content {
+    min-height: calc(100% - 30px);
+    margin: auto;
+    width: 80%;
+}
+[cotton] main#ctn-content .ctn-text-invalid {
+    border-color: orangered;
+}
+[cotton] main#ctn-content .ctn-check-invalid::before {
+    content: 'require!';
+    position: relative;
+    left: -1.5em;
+    float: right;
+    color: orangered;
+    white-space: nowrap;
+}
+[cotton] main#ctn-content .ctn-check-invalid[ctn-invalid-message]::before {
+    content: attr(ctn-invalid-message);
+}
+
+/* footer */
+[cotton] #ctn-footer {
+    background-color: lightgray;
+    height: auto;
+    text-align: center;
+}
+
