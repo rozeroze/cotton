@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>cotton</title>
-    <style>body { margin: 0; padding: 0; }</style>
+    <style> body { margin: 0; padding: 0; } </style>
     <link rel="stylesheet" href="./cotton.css">
     <script src="./cotton.js" defer></script>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js" defer></script>
 </head>
 <body cotton>
 
@@ -16,102 +17,146 @@
         <nav class="ctn-nav">
             <ul>
                 <li><a href="https://github.com/rozeroze/cotton">Github</a></li>
-                <li><a href="https://github.com/rozeroze/cotton/blob/master/readme.md">ReadMe</a></li>
+                <li><a href="https://github.com/rozeroze/cotton/blob/master/README.md">ReadMe</a></li>
             </ul>
         </nav>
     </header>
 
     <main id="ctn-content">
 
-        <section>
+        <section id="cotton">
             <h1>Cotton</h1>
-            <p>CottonはInput要素の動作を拡張するためのライブラリです</p>
             <p>
-            <!-- badge.fury.io -->
-            <!-- bower.io -->
-            <!-- www.jsdelivr.com -->
-            <!-- www.npmjs.com -->
+                <!-- badge.fury.io -->
+                <!-- bower.io -->
+                <!-- www.jsdelivr.com -->
+                <!-- www.npmjs.com -->
             </p>
+            <p>CottonはInput要素の動作を拡張するためのライブラリです</p>
+            <p>TextBoxは[utf-8, utf-16, sjis]のいずれかで入力されたものとし、必要なByte数を超えないようにすることができます</p>
+            <p>TextBoxの場合は、設定されたMaxByteプロパティを超えたら、超えた部分の文字を削除するか、Input要素の枠色を強調するかの２通りの動作を設定できます</p>
+            <p>TextBoxの他のType、NumberやPasswordについては、HTML5の標準の機能で十分かと思いますので、Cottonではこれらに対しては対応しておりません(今後の対応は不明)</p>
+            <p>CheckBoxはRequire属性を追加できます</p>
+            <p>CheckBoxのRequire属性は標準のものもありますが、こちらはTextBoxと同じようにChangeイベントが発生した時点でCheckの有無を判定できます</p>
+            <p>また、FormのSubmitイベントについて、Submitを行なう前にForm下のすべてのCotton要素に対し入力値が正常か否かを判定する機能を用意しました</p>
+            <p>以上のTextBox,CheckBoxなどのCotton要素に関する使用方法は以下を御覧ください</p>
+            <fieldset>
+                <legend>目次</legend>
+                <ul>
+                    <li><a href="#cotton">Cotton</a><span> - Cottonとはなにか</span></li>
+                    <li><a href="#utf8">UTF8</a><span> - TextをUTF8として扱う</span></li>
+                    <li><a href="#utf16">UTF16</a><span> - TextをUTF16として扱う</span></li>
+                    <li><a href="#sjis">SJIS</a><span> - TextをShiftJISとして扱う</span></li>
+                    <li><a href="#number">Number</a><span> - Number要素の扱い(標準機能)</span></li>
+                    <li><a href="#password">Password</a><span> - Password要素の扱い(標準機能)</span></li>
+                    <li><a href="#checkbox">CheckBox</a><span> - CheckBoxにRequire属性を追加</span></li>
+                    <li><a href="#submit">Submit</a><span> - Submitする前にCotton要素を判定する</span></li>
+                </ul>
+            </fieldset>
         </section>
 
         <section>
             <h2>TextBox</h2>
 
-            <section>
+            <section id="utf8">
                 <h3>UTF-8</h3>
                 <p>utf-8で10byteを超えた部分は削除される</p>
-                <pre><code>&lt;input type="text" class="ctn-text-utf8 ctn-text-leftbyte" ctn-maxbyte="10"&gt;</code></pre>
+                <pre><code class="prettyprint">&lt;input type="text" class="ctn-text-utf8 ctn-text-leftbyte" ctn-maxbyte="10"&gt;</code></pre>
                 <input type="text" class="ctn-text-utf8 ctn-text-leftbyte" ctn-maxbyte="10">
                 <p>utf-8で10byteを超えた場合は枠が赤くなる</p>
-                <pre><code>&lt;input type="text" class="ctn-text-utf8 ctn-text-highlight" ctn-maxbyte="10"&gt;</code></pre>
+                <pre><code class="prettyprint">&lt;input type="text" class="ctn-text-utf8 ctn-text-highlight" ctn-maxbyte="10"&gt;</code></pre>
                 <input type="text" class="ctn-text-utf8 ctn-text-highlight" ctn-maxbyte="10">
             </section>
 
-            <section>
+            <section id="utf16">
                 <h3>UTF-16</h3>
                 <p>utf-16で10byteを超えた部分は削除される</p>
-                <pre><code>&lt;input type="text" class="ctn-text-utf16 ctn-text-leftbyte" ctn-maxbyte="10"&gt;</code></pre>
+                <pre><code class="prettyprint">&lt;input type="text" class="ctn-text-utf16 ctn-text-leftbyte" ctn-maxbyte="10"&gt;</code></pre>
                 <input type="text" class="ctn-text-utf16 ctn-text-leftbyte" ctn-maxbyte="10">
                 <p>utf-16で10byteを超えた場合は枠が赤くなる</p>
-                <pre><code>&lt;input type="text" class="ctn-text-utf16 ctn-text-highlight" ctn-maxbyte="10"&gt;</code></pre>
+                <pre><code class="prettyprint">&lt;input type="text" class="ctn-text-utf16 ctn-text-highlight" ctn-maxbyte="10"&gt;</code></pre>
                 <input type="text" class="ctn-text-utf16 ctn-text-highlight" ctn-maxbyte="10">
             </section>
 
-            <section>
+            <section id="sjis">
                 <h3>ShiftJIS</h3>
                 <p>sjisで10byteを超えた部分は削除される</p>
-                <pre><code>&lt;input type="text" class="ctn-text-sjis ctn-text-leftbyte" ctn-maxbyte="10"&gt;</code></pre>
+                <pre><code class="prettyprint">&lt;input type="text" class="ctn-text-sjis ctn-text-leftbyte" ctn-maxbyte="10"&gt;</code></pre>
                 <input type="text" class="ctn-text-sjis ctn-text-leftbyte" ctn-maxbyte="10">
                 <p>sjisで10byteを超えた場合は枠が赤くなる</p>
-                <pre><code>&lt;input type="text" class="ctn-text-sjis ctn-text-highlight" ctn-maxbyte="10"&gt;</code></pre>
+                <pre><code class="prettyprint">&lt;input type="text" class="ctn-text-sjis ctn-text-highlight" ctn-maxbyte="10"&gt;</code></pre>
                 <input type="text" class="ctn-text-sjis ctn-text-highlight" ctn-maxbyte="10">
             </section>
 
-            <section>
+            <section id="number">
                 <h3>Number</h3>
                 <p>入力可能な数値の上限と下限を設定する→標準でできる</p>
-                <pre><code>&lt;input type="number" max="999" min="1"&gt;</code></pre>
+                <pre><code class="prettyprint">&lt;input type="number" max="999" min="1"&gt;</code></pre>
                 <form action="javascript: alert('number is in-range');">
                     <input type="number" max="999" min="1">
-                    <input type="submit">
+                    <button type="submit">送信</button>
                 </form>
             </section>
 
-            <section>
+            <section id="password">
                 <h3>Password</h3>
                 <p>パスワードに英大文字、英小文字、数字がそれぞれ１つ以上含まれているか→標準でできる</p>
-                <pre><code>&lt;input type="password" minlength="8" maxlength="32" autocomplete="off" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"&gt;</code></pre>
+                <pre><code class="prettyprint">&lt;input type="password" minlength="8" maxlength="32" autocomplete="off" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"&gt;</code></pre>
                 <form action="javascript: alert('password contain at least on number and one uppercase and lowercase letter, and at least 8 or more charecters');">
                     <input type="password" minlength="8" maxlength="32" autocomplete="off" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
-                    <input type="submit">
+                    <button type="submit">送信</button>
                 </form>
-                <p>メッセージを追加することが可能→標準でできる</p>
+                <p>パスワードのエラーメッセージを追加することが可能→標準でできる</p>
+                <pre><code class="prettyprint">&lt;input type="password" minlength="8" maxlength="32" autocomplete="off" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="英大文字(A～Z)、英小文字(a～z)、数字(0～9)がそれぞれ１つ以上必要"&gt;</code></pre>
                 <form action="javascript: alert('password contain at least on number and one uppercase and lowercase letter, and at least 8 or more charecters');">
                     <input type="password" minlength="8" maxlength="32" autocomplete="off" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="英大文字(A～Z)、英小文字(a～z)、数字(0～9)がそれぞれ１つ以上必要">
-                    <input type="submit">
+                    <button type="submit">送信</button>
                 </form>
             </section>
 
         </section>
 
-        <section>
+        <section id="checkbox">
             <h2>CheckBox</h2>
 
             <section>
                 <h3>Require</h3>
                 <p>チェックがない場合はメッセージを表示する</p>
-                <pre><code>&lt;input type="checkbox" class="ctn-check-require"&gt;</code></pre>
+                <pre><code class="prettyprint">&lt;input type="checkbox" class="ctn-check-require"&gt;</code></pre>
                 <input type="checkbox" class="ctn-check-require"><span>利用規約に同意する</span>
                 <p>メッセージの内容は指定できる</p>
-                <pre><code>&lt;input type="checkbox" class="ctn-check-require" ctn-invalid-message="チェックが必要です"&gt;</code></pre>
+                <pre><code class="prettyprint">&lt;input type="checkbox" class="ctn-check-require" ctn-invalid-message="チェックが必要です"&gt;</code></pre>
                 <input type="checkbox" class="ctn-check-require" ctn-invalid-message="チェックが必要です"><span>利用規約に同意する</span>
             </section>
 
         </section>
 
-        <section>
+        <section id="submit">
+            <h2>Submit</h2>
+
+            <section>
+                <h3>Check</h3>
+                <p>Submitする前に入力値チェックを挟む</p>
+<pre><code class="prettyprint">&lt;form action="javascript: alert('all of input is valid!');" class="ctn-form"&gt;
+   &lt;input type="text" class="ctn-text-utf8 ctn-text-highlight" ctn-maxbyte="10" value="デフォルトで駄目な値"&gt;
+   &lt;input type="text" class="ctn-text-utf16 ctn-text-highlight" ctn-maxbyte="10" value="デフォルトで駄目な値"&gt;
+   &lt;input type="text" class="ctn-text-sjis ctn-text-highlight" ctn-maxbyte="10" value="デフォルトで駄目な値"&gt;
+   &lt;input type="checkbox" class="ctn-check-require" ctn-invalid-message="チェックが必要です"&gt;&lt;span&gt;require check!&lt;/span&gt;
+   &lt;button type="submit"&gt;送信&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                <form action="javascript: alert('all of input is valid!');" class="ctn-form">
+                    <p><input type="text" class="ctn-text-utf8 ctn-text-highlight" ctn-maxbyte="10" value="デフォルトで駄目な値"></p>
+                    <p><input type="text" class="ctn-text-utf16 ctn-text-highlight" ctn-maxbyte="10" value="デフォルトで駄目な値"></p>
+                    <p><input type="text" class="ctn-text-sjis ctn-text-highlight" ctn-maxbyte="10" value="デフォルトで駄目な値"></p>
+                    <p><input type="checkbox" class="ctn-check-require" ctn-invalid-message="チェックが必要です"><span>require check!</span></p>
+                    <button type="submit">送信</button>
+                </form>
+            </section>
+
+        </section>
+
+        <section id="license">
             <h2>License</h2>
-            <p></p>
         </section>
 
     </main>

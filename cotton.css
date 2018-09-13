@@ -24,10 +24,13 @@
 [cotton] table {
     border-collapse: collapse;
 }
-[cotton] code {
+[cotton] pre {
     background-color: white;
     border: 1px solid lightgray;
     padding: 10px;
+}
+[cotton] code {
+    white-space: pre-wrap;
 }
 [cotton] th,
 [cotton] td {
@@ -59,7 +62,7 @@
 }
 
 /* header */
-[cotton] header#ctn-header {
+[cotton] #ctn-header {
     min-height: 30px;
     background-color: lightgray;
     border-radius: 15px;
@@ -69,32 +72,32 @@
     flex-direction: row;
     box-shadow: 0 0.5em 1.5em 0 rgba(0, 0, 0, 0.1);
 }
-[cotton] header#ctn-header * {
+[cotton] #ctn-header * {
     height: auto;
     margin: 0 auto;
     padding: 0;
 }
-[cotton] header#ctn-header .ctn-title {
+[cotton] #ctn-header .ctn-title {
     font-size: 1.2em;
 }
-[cotton] header#ctn-header .ctn-nav ul {
+[cotton] #ctn-header .ctn-nav ul {
     display: flex;
     flex-direction: row;
 }
-[cotton] header#ctn-header .ctn-nav ul li {
+[cotton] #ctn-header .ctn-nav ul li {
     margin: 0 10px;
 }
 
 /* main */
-[cotton] main#ctn-content {
+[cotton] #ctn-content {
     min-height: calc(100% - 30px);
     margin: auto;
     width: 80%;
 }
-[cotton] main#ctn-content .ctn-text-invalid {
+[cotton] #ctn-content .ctn-text-invalid {
     border-color: orangered;
 }
-[cotton] main#ctn-content .ctn-check-invalid::before {
+[cotton] #ctn-content .ctn-check-invalid::before {
     content: 'require!';
     position: relative;
     left: -1.5em;
@@ -102,7 +105,7 @@
     color: orangered;
     white-space: nowrap;
 }
-[cotton] main#ctn-content .ctn-check-invalid[ctn-invalid-message]::before {
+[cotton] #ctn-content .ctn-check-invalid[ctn-invalid-message]::before {
     content: attr(ctn-invalid-message);
 }
 
